@@ -6,32 +6,31 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.myproject.model.*;
 
 @Repository
-public class ProductDAOImpl implements ProductDAO
-{
-
-
+public class ProductDAOImpl implements ProductDAO {
+    
+	List<Product> list;
 	@Autowired
 	private SessionFactory sf;
-	
-	List<Product> list;
 	public ProductDAOImpl()
 	{
-		list=new ArrayList<Product>();
+	 list=new ArrayList<Product>();
 	}
 	
 	public List<Product> productDetails()
 	{
 		System.out.println("e1");
-	
-		Session s=sf.getCurrentSession();
-		System.out.println("e2");
+		//list=new ArrayList<Product>();
+		Session s= sf.openSession();
+		
 		try{
-			org.hibernate.Query query=s.createQuery("from PRODUCT");
+			org.hibernate.Query query=s.createQuery("from Product");
 			list=query.list();
-			System.out.println("e3");
+			
 		}
 		catch(HibernateException e)
 		{

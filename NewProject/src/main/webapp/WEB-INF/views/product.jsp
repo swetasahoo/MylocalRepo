@@ -84,6 +84,7 @@ $(document).ready(function(){
                 <td>${p.price}</td>
                 <td>${p.description}</td>
                 <td><a href="features?+id=${p.ID}"><img src="<cr:url value='resources/ques.jpg'/>"  style="width:30px;height:30px" alt="Image" /></a></td>
+                
             </tr>
         </cr:forEach>
     </table>

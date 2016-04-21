@@ -4,6 +4,6 @@ import com.myproject.model.*;
 
 public interface ProductDAO {
 	
-	public List<Product> productDetails();
+	public List<Product>  productDetails();
 	
 }
