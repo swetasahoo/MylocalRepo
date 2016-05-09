@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow-config
+       http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd">
+    
+    <!-- <var name="order" class="com.musichub.model.CustomerOrder" />-->
+    <action-state id="addCartToOrder">
+        <!-- <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart" />-->
+        <!-- <transition to="invalidCart" on-exception="java.io.IOException" />-->
+        <transition to="customerInfoForm" />
+    </action-state>
+​
+    <view-state id="customerInfoForm" view="customerInfoForm.jsp" model="order">
+        <transition on="customerInfoCollected" to="shippingDetailForm" />
+    </view-state>
+​
+    <view-state id="shippingDetailForm" view="shippingDetailForm.jsp" model="order">
+        <transition on="shippingDetailCollected" to="orderConfirmation" />
+        <transition on="backToCollectCustomerInfo" to="customerInfoForm" />
+    </view-state>
+​
+    <view-state id="orderConfirmation">
+        <transition on="orderConfirmed" to="processOrder" />
+        <transition on="backToCollectShippingDetail" to="shippingDetailForm" />
+    </view-state>
+​
+    <action-state id="processOrder">
+        <evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)" />
+        <transition to="thankYou" />
+    </action-state>
+​
+    <view-state id="thankYou" model="order">
+        <transition to="endState" />
+    </view-state>
+​
+    <end-state id="endState" />
+​
+    <view-state id="invalidCart">
+        <transition to="endState" />
+    </view-state>
+​
+    <end-state id="cancelCheckout" view="orderCancelled.jsp" />
+​
+    <global-transitions>
+        <transition on="cancel" to="cancelCheckout" />
+    </global-transitions>
+</flow>
