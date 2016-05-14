@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -69,16 +70,20 @@
   <br>
   <br>
 <div class="container">    
-  <form action="<spring:url value="/order/?pid=${prod_id.ID}" />">
-  <H1> Product Details</H1>
+  
+  
+    <H1> Product Details</H1>
   <ul>
-  <li>${prod_id.ID}</li>
-  <li>${prod_id.name }</li>
-  <li>${prod_id.description}</li>
-  <li>${prod_id.price}</li>
+  <b>Product ID:</b>${prod_id.ID}<br>
+  <b>Product Name:</b>${prod_id.name }<br>
+  <b>Description:</b>${prod_id.description}<br>
+  <b>Total Quantity:</b>${prod_id.quantity}<br>
+  <b>Price:</b>${prod_id.price}<br>
   </ul>
   
-  
+
+
+<form action="user/addCart?pid=${prod_id.ID}">
     <input type="submit" value="Add to Cart"/>
 </form>
 <br/>

@@ -71,19 +71,35 @@
   <br>
 <div class="container">    
   
-  <form action="<spring:url value="/order" />" method="post">
-    <H1> Product Details</H1>
-  <ul>
-  <b>Product ID:</b>${prod_id.ID}<br>
-  <b>Product Name:</b>${prod_id.name }<br>
-  <b>Description:</b>${prod_id.description}<br>
-  <b>Total Quantity:</b>${prod_id.quantity}<br>
-  <b>Price:</b>${prod_id.price}<br>
-  </ul>
   
   
+<div class="table-responsive">       
+<table class="table table-hover" width="50%">
+  <thead>
+    <tr>
+      <th>Product Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Total Quantity</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+         <tr>
+      <td>${prod_id.ID}</td>
+      <td>${prod_id.name}</td>
+      <td>${prod_id.description}</td>
+      <td>${product.price}</td>
+      <td>${prod_id.quantity}</td>
+       
+    </tr>
+    </tbody>
+</table>
+</div>
+<form action="user/addCart?pid=${prod_id.ID}">
     <input type="submit" value="Add to Cart"/>
-</form>
+
 <br/>
 </div>
 <br>

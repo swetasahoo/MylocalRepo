@@ -11,7 +11,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/mvc/spring-mvc.xsd 
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
-
 <context:component-scan base-package="com.musichub"/> 
 <mvc:annotation-driven/>
 <tx:annotation-driven/>
@@ -22,14 +21,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
    </mvc:annotation-driven>
  
  <mvc:resources location="/resource/**" mapping="/resource/**"></mvc:resources>
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-<property name="prefix">
-<value>/WEB-INF/views/</value>
-</property>
-<property name="suffix">
-<value>.jsp</value>
-</property>
+<property name="prefix"><value>/WEB-INF/views/</value></property>
+<property name="suffix"><value>.jsp</value></property>
 
 </bean>
 </beans>

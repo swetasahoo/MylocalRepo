@@ -85,7 +85,7 @@
         
         <div class="panel-body"><img src="<c:url value='resource/g.png'/>" class="img-responsive" style="width:150px;height:150px" alt="Image"></div>
         
-        <div class="panel-footer"><a href="userproduct">Shop Now</div>
+        <div class="panel-footer"><a href="user/userproduct">Shop Now</div>
       </div>
     </div>
     <div class="col-sm-4"> 

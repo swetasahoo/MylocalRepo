@@ -18,22 +18,26 @@ public class Product implements Serializable {
 	private String name;
 	private String description;
     private int quantity;
-	
 	private int price;
 	
+    
 	transient private MultipartFile  image;
 	
 	@Transient
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
 	public MultipartFile getImage() {
 		return image;
 	}
-	
-	
+
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
+	
 
 
 	public int getQuantity() {
@@ -42,9 +46,7 @@ public class Product implements Serializable {
 
 
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
+	
 
 	public void setID(int iD) {
 		ID = iD;

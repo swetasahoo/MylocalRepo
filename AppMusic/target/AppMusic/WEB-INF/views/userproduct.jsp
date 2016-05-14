@@ -8,13 +8,14 @@
 </head>
 <body>
 <%@include file="header.jsp" %>
-
+<align="right">${username}</align>
 
 <table border="1" id="myTable" class="display table" width="100%" >
 <tr>
 <th>Serial No</td>
 <th>Name</th>
 <th>Price</th>
+<th>Total Quantity</th>
 <th>Description</th>
 <th>ADD To Cart</th>
 </tr>
@@ -23,6 +24,7 @@
                 <td>${p.ID}</td>
                 <td>${p.name}</td>
                 <td>${p.price}</td>
+                <td>${p.quantity}</td>
                 <td>${p.description}</td>
                 <td><a href="show/${p.ID}">Details</a></td>
             </tr>

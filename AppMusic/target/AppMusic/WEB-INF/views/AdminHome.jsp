@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
@@ -53,7 +54,8 @@
 </div>
 <br>
 <br>
-<a href="/admin/manage">Manage Product</a>&nbsp;&nbsp;&nbsp;&nbsp;
+${username}
+<a href="admin/productdetails">Manage Product</a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="#">Manage User</a>
 
 <br>

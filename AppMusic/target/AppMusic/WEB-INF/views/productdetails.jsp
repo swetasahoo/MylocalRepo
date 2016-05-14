@@ -76,7 +76,7 @@ $(document).ready(function(){
  
 <c:url var="addAction" value="product/add" ></c:url>
  
-<form:form action="${pageContext.request.contextPath}/product/add" commandName="product" enctype="multipart/form-data">
+<form:form action="${pageContext.request.contextPath}/admin/add" commandName="product" enctype="multipart/form-data">
 
 <table>
 
@@ -168,8 +168,8 @@ $(document).ready(function(){
                 <td>${p.price}</td>
                 <td>${p.description}</td>
                 <td>${p.quantity}</td>
-                <td><a href="<c:url value='/edit/${p.ID}' />" >Edit</a></td>
-                <td><a href="<c:url value='/remove/${p.ID}' />" >Delete</a></td>
+                <td><a href="<c:url value='edit/${p.ID}' />" >Edit</a></td>
+                <td><a href="<c:url value='remove/${p.ID}' />" >Delete</a></td>
                 
             </tr>
         </c:forEach>

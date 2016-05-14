@@ -82,9 +82,6 @@ public class MyController {
      
 	}
 
-	
-	
-	
 	@RequestMapping("/Contact")
 	public String contact()
 	{
@@ -132,6 +129,7 @@ public class MyController {
     public String addProduct(@ModelAttribute("product") Product p,HttpServletRequest request){
 		System.out.println("inside add");
 		System.out.println(p.getID());
+		System.out.println(p.getName());
 		
 	  if(p.getID()==0)
 		{
@@ -145,6 +143,8 @@ public class MyController {
 		
 		String path=sc.getRealPath("./resource/pr"+(pp.getID()+1)+".jpg");
 		System.out.println("Path:"+path);
+		System.out.println(p.getName());
+		System.out.println(p.getDescription());
 		System.out.println("file Name="+p.getImage().getOriginalFilename());
 		File f=new File(path);
 		if(!p.getImage().isEmpty())
@@ -244,8 +244,10 @@ public class MyController {
 		return "productpage";
     }
 	
-	@RequestMapping("/order")
-    public String createOrder() {
+	@RequestMapping("user/addCart/{id}")
+	 public String addToCart(@RequestParam int pid)
+    {
+		Product p=new Product();
 		
 		System.out.println("aaa");
         return "redirect:/checkout";
