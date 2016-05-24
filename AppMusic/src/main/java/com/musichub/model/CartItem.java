@@ -1,16 +1,15 @@
 package com.musichub.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.io.Serializable;
 
-public class CartItem {
 
-	private static final long serialVersionUID = 14L;
+@Entity
+public class CartItem implements Serializable{
+
+    private static final long serialVersionUID = 14L;
 
     @Id
     @GeneratedValue
@@ -27,40 +26,44 @@ public class CartItem {
 
     private int quantity;
     private double totalPrice;
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	public int getCartItemId() {
-		return cartItemId;
-	}
-	public Cart getCart() {
-		return cart;
-	}
-	public Product getItem() {
-		return item;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public double getTotalPrice() {
-		return totalPrice;
-	}
-	public void setCartItemId(int cartItemId) {
-		this.cartItemId = cartItemId;
-	}
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-	public void setItem(Product item) {
-		this.item = item;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
 
-    
-    
+    public int getCartItemId() {
+        return cartItemId;
+    }
+
+    public void setCartItemId(int cartItemId) {
+        this.cartItemId = cartItemId;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Product getItem() {
+        return item;
+    }
+
+    public void setItem(Product item) {
+        this.item = item;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

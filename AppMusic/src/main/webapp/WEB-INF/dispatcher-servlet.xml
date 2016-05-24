@@ -3,17 +3,34 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:context="http://www.springframework.org/schema/context"
 xmlns:mvc="http://www.springframework.org/schema/mvc"
 xmlns:tx="http://www.springframework.org/schema/tx"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc.xsd 
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd">
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd">   
+  
 <context:component-scan base-package="com.musichub"/> 
 <mvc:annotation-driven/>
 <tx:annotation-driven/>
+
+  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="465" />
+		<property name="username" value="sweta2478@gmail.com" />
+		<property name="password" value="jajwuthtf" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl">no</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSender">
+	</bean>
 <mvc:annotation-driven>
        <mvc:argument-resolvers>
            <bean class="org.springframework.security.web.bind.support.AuthenticationPrincipalArgumentResolver" />
@@ -24,6 +41,14 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 <property name="prefix"><value>/WEB-INF/views/</value></property>
 <property name="suffix"><value>.jsp</value></property>
-
 </bean>
+
+<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">Error</prop>
+			</props>
+		</property>
+	</bean>	
 </beans>

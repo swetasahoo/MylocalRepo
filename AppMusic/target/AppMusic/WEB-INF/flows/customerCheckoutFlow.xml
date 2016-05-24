@@ -11,10 +11,11 @@
         <transition to="customerInfoForm" />
     </action-state>-->    
 ​
-    <view-state id="checkout" view="customerInfoForm.jsp" >
+
+    <view-state id="user/show/checkout" view="customerInfoForm.jsp" >
         <transition on="customerInfoCollected" to="shippingDetailForm" />
     </view-state>
-​
+
     <view-state id="shippingDetailForm" view="shippingDetailForm.jsp" model="order">
         <transition on="shippingDetailCollected" to="orderConfirmation" />
         <transition on="backToCollectCustomerInfo" to="customerInfoForm" />

@@ -97,9 +97,10 @@
     </tbody>
 </table>
 </div>
-<form action="user/addCart?pid=${prod_id.ID}">
+<!--<form action="/user/show/addCart">
     <input type="submit" value="Add to Cart"/>
-
+form>-->
+<a href="addCart">Add Cart</a>
 <br/>
 </div>
 <br>

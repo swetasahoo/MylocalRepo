@@ -1,13 +1,20 @@
 package com.musichub.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-public class UserOrder {
 
-	@Id
+@Entity
+public class UserOrder implements Serializable{
+
+    private static final long serialVersionUID = 16L;
+
+    @Id
     @GeneratedValue
     private int userOrderId;
 	@OneToOne
@@ -16,7 +23,7 @@ public class UserOrder {
 
     @OneToOne
     @JoinColumn(name = "userId")
-    private UserDetail usersDetail;
+    private UsersDetail usersDetail;
 
 	@OneToOne
     @JoinColumn(name = "billingAddressId")
@@ -24,49 +31,45 @@ public class UserOrder {
 
     @OneToOne
     @JoinColumn(name="shippingAddressId")
-    private ShippingAdd shippingAddress;
+    private ShippingAddress shippingAddress;
 
-	public int getUserOrderId() {
+    public int getUserOrderId() {
 		return userOrderId;
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public UserDetail getUsersDetail() {
-		return usersDetail;
-	}
-
-	public BillingAdd getBillingAddress() {
-		return billingAddress;
-	}
-
-	public ShippingAdd getShippingAddress() {
-		return shippingAddress;
 	}
 
 	public void setUserOrderId(int userOrderId) {
 		this.userOrderId = userOrderId;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+
+    public BillingAdd getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(BillingAdd billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public ShippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+    public UsersDetail getUsersDetail() {
+		return usersDetail;
 	}
 
-	public void setUsersDetail(UserDetail usersDetail) {
+	public void setUsersDetail(UsersDetail usersDetail) {
 		this.usersDetail = usersDetail;
 	}
-
-	public void setBillingAddress(BillingAdd billingAddress) {
-		this.billingAddress = billingAddress;
-	}
-
-	public void setShippingAddress(ShippingAdd shippingAddress) {
-		this.shippingAddress = shippingAddress;
-	}
-
-
-
-
 }

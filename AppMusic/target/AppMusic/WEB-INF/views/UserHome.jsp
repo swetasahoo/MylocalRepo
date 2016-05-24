@@ -73,7 +73,8 @@
 <br>
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Welcome to  ${username} </h1>        
+    <h1>Welcome to  ${username} </h1>   
+    <a href="user/sendmail">Send Mail</a>     
   </div>
 </div>
 <br>

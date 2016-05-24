@@ -36,7 +36,7 @@
 <body>
 
 <div class="container">
-  <h2>Create Account</h2>
+  
   <form:form commandName="user" class="form-horizontal" role="form" action="u_register" method="post">
   <div class="form-group">
 
@@ -73,7 +73,7 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit"  value="Save" class="btn btn-default" onclick="return Validate()" />
+        <input type="submit"  value="Register" class="btn btn-default" onclick="return Validate()" />
       </div>
     </div>
   </form:form>

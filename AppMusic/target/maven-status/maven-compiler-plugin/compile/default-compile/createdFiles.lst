@@ -1,7 +1,6 @@
 com\musichub\DAO\UserDAO.class
 com\musichub\DAO\UserDAOImpl.class
 com\musichub\DAO\ProductDAO.class
-com\musichub\model\CustomerOrder.class
 com\musichub\model\User.class
 com\musichub\controller\MyController.class
 com\musichub\model\Product.class

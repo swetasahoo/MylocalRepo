@@ -1,6 +1,9 @@
 package com.musichub.controller;
 
+
+
 import java.io.BufferedOutputStream;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.security.Principal;
@@ -8,6 +11,7 @@ import java.util.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -22,8 +26,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.musichub.DAO.UserDAOService;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMailMessage;
+
 import com.musichub.model.*;
 
 @Controller
@@ -31,10 +39,23 @@ public class MyController {
 	@Autowired
 	UserDAOService uds;
 	
+	//private JavaMailSender mailSender;
+	
+	/*@Autowired
+	public void setJavaMailSender(JavaMailSender mailSender)
+	{
+		this.mailSender=mailSender;
+	}*/
+	//@Autowired
+	  //private JavaMailSenderImpl mailSender;
+
 	@Autowired
 	public MyController(UserDAOService ud)
 	{
 		this.uds=ud;
+		
+		
+		
 	}
 	
 	@RequestMapping("/")
@@ -225,7 +246,50 @@ public class MyController {
 	
 	//*************USER PAGE**********************************
 	
-	@RequestMapping("user/userproduct")
+	@RequestMapping("/user/sendmail")
+	public String  mail(Principal principal)
+	{
+	   
+		return "EmailForm";
+		
+	}
+	@RequestMapping("/user/doSendMail")
+    public String doMail(Principal principal,HttpServletRequest request)
+	{
+		
+		
+		try
+		{
+		String recipientAddress = request.getParameter("recipient");
+		String subject = request.getParameter("subject");
+		String message = request.getParameter("message");
+		
+		// prints debug info
+		System.out.println("To: " + recipientAddress);
+		System.out.println("Subject: " + subject);
+		System.out.println("Message: " + message);
+		
+		// creates a simple e-mail object
+		//SimpleMailMessage email = new SimpleMailMessage();
+		//SimpleMailMessage email = new SimpleMailMessage();
+		//email.setTo(recipientAddress);
+		//email.setSubject(subject);
+		//email.setText(message);
+		
+		// sends the e-mail
+		//mailSender.send(email);
+		
+		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Exception = "+ex);
+		}
+		return "Success";
+        
+        
+	}
+	@RequestMapping("/user/userproduct")
 	public String userproduct(Model m,Principal principal)
 	{
 		m.addAttribute("listproduct",uds.listProducts());
@@ -235,7 +299,7 @@ public class MyController {
 		return "userproduct";
 		
 	}
-	@RequestMapping("user/show/{id}")
+	@RequestMapping("/user/show/{id}")
     public String showProduct(@PathVariable("id") int id,Model m)
 	{
          System.out.println(id);
@@ -244,13 +308,13 @@ public class MyController {
 		return "productpage";
     }
 	
-	@RequestMapping("user/addCart/{id}")
-	 public String addToCart(@RequestParam int pid)
+	@RequestMapping("/user/show/addCart")
+	 public String addToCart()
     {
 		Product p=new Product();
 		
 		System.out.println("aaa");
-        return "redirect:/checkout";
+        return "redirect:checkout";
     }
 
 
